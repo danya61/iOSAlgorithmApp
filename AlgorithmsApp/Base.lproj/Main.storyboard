@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reveal View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="XKl-EA-4RJ" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="fml-ZW-Ha7"/>
+                        <segue destination="seA-66-H1k" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="KPq-R1-MdU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Menu Table View Controller-->
+        <scene sceneID="qew-mg-JQU">
+            <objects>
+                <tableViewController id="XKl-EA-4RJ" customClass="MenuTableViewController" customModule="AlgorithmsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="b5o-w0-jwn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCellName" rowHeight="59" id="YCS-br-iRv">
+                                <rect key="frame" x="0.0" y="28" width="600" height="59"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YCS-br-iRv" id="4GN-tJ-4bF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="58"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.84365576036246825" green="0.94329587700852924" blue="1" alpha="0.4632381134969325" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.20893125730000001" blue="0.1101893077" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="seA-66-H1k" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="7f4-ZH-w3w"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XKl-EA-4RJ" id="E2o-sz-Nvv"/>
+                            <outlet property="delegate" destination="XKl-EA-4RJ" id="Ob0-FB-24f"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pKf-KV-4gh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1107" y="825"/>
+        </scene>
+        <!--Txt View Controller-->
+        <scene sceneID="YeW-qI-kHa">
+            <objects>
+                <viewController id="CMb-bT-EJz" customClass="TxtViewController" customModule="AlgorithmsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oPQ-CB-DnA"/>
+                        <viewControllerLayoutGuide type="bottom" id="CUt-UW-A1n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wgv-9K-ngm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4E-pS-R4m">
+                                <rect key="frame" x="0.0" y="64" width="600" height="516"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="31"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g4E-pS-R4m" firstAttribute="top" secondItem="oPQ-CB-DnA" secondAttribute="bottom" id="BUG-G9-5fs"/>
+                            <constraint firstAttribute="bottom" secondItem="g4E-pS-R4m" secondAttribute="bottom" constant="20" symbolic="YES" id="XeL-zs-rF2"/>
+                            <constraint firstItem="g4E-pS-R4m" firstAttribute="leading" secondItem="Wgv-9K-ngm" secondAttribute="leading" id="hVo-vi-kE2"/>
+                            <constraint firstAttribute="trailing" secondItem="g4E-pS-R4m" secondAttribute="trailing" id="hcQ-8B-c8x"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="g4E-pS-R4m" id="WsH-Wf-XC7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KHA-WB-S9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="825"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yQN-BT-5RB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="seA-66-H1k" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uqp-cs-MxS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gIu-cm-z7A" kind="relationship" relationship="rootViewController" id="Ksx-eX-6CC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="meR-zO-bIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1107" y="86"/>
+        </scene>
+        <!--Algo View Controller List-->
+        <scene sceneID="sEM-Tv-SwD">
+            <objects>
+                <collectionViewController id="gIu-cm-z7A" customClass="AlgoViewControllerList" customModule="AlgorithmsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UHQ-gf-0bC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="4Wd-af-ZX4">
+                            <size key="itemSize" width="280" height="113"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="McA-kp-oe7" customClass="AlgoViewCell" customModule="AlgorithmsApp" customModuleProvider="target">
+                                <rect key="frame" x="160" y="64" width="280" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="280" height="113"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="GKJ-ZD-Ka9">
+                                            <rect key="frame" x="8" y="8" width="264" height="97"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                            <color key="textColor" red="0.1053673663972001" green="0.17680786731159806" blue="0.3886095412234043" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="0.55043168188881308" green="0.9911486037234043" blue="0.9467386240374801" alpha="0.18457630368098155" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="GKJ-ZD-Ka9" firstAttribute="bottom" secondItem="McA-kp-oe7" secondAttribute="bottomMargin" id="BUX-Cj-SWc"/>
+                                    <constraint firstItem="GKJ-ZD-Ka9" firstAttribute="top" secondItem="McA-kp-oe7" secondAttribute="topMargin" id="MBh-d4-8Df"/>
+                                    <constraint firstItem="GKJ-ZD-Ka9" firstAttribute="trailing" secondItem="McA-kp-oe7" secondAttribute="trailingMargin" id="P1b-MG-5ae"/>
+                                    <constraint firstItem="GKJ-ZD-Ka9" firstAttribute="leading" secondItem="McA-kp-oe7" secondAttribute="leadingMargin" id="Xp3-zz-1DB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="cellLabel" destination="GKJ-ZD-Ka9" id="p9i-B6-pb2"/>
+                                    <segue destination="CMb-bT-EJz" kind="show" id="dJc-bY-3mI"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="gIu-cm-z7A" id="kYm-9Q-5WP"/>
+                            <outlet property="delegate" destination="gIu-cm-z7A" id="YML-zN-HWa"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="pVH-8c-GZa">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="mwd-pZ-QLn"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="mwd-pZ-QLn" id="rUN-OU-pal"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5S-Hf-BHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="87"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="menu" width="22" height="22"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KPq-R1-MdU"/>
+    </inferredMetricsTieBreakers>
+</document>

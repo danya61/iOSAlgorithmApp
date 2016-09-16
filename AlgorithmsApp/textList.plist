@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>foured</key>
+	<array>
+		<string></string>
+		<string></string>
+	</array>
+	<key>third</key>
+	<array>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+	</array>
+	<key>second</key>
+	<array>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+		<string></string>
+	</array>
+	<key>first</key>
+	<array>
+		<string>firstVybor</string>
+		<string>firstVstavka</string>
+		<string>firstTopo</string>
+		<string>firstPyzir</string>
+		<string>firstSliyanie</string>
+		<string>firstPiramida</string>
+		<string>firstBystraya</string>
+		<string>firstPorazryadnaya</string>
+	</array>
+</dict>
+</plist>

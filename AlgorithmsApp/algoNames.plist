@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fouredTab</key>
+	<array>
+		<string>Поиск ближайшего цвета</string>
+		<string>Удаление скрытых линий и поверхностей</string>
+	</array>
+	<key>thirdTab</key>
+	<array>
+		<string>Алгоритм поиска: Наивный алгоритм</string>
+		<string>Алгоритм поиска: Боуера - Мура</string>
+		<string>Алгоритм поиска: Кнута- Морриса - Пратта</string>
+		<string>Алгоритм поиска: Рабина - Карпа</string>
+		<string>Алгоритм поиска: Построение автомата</string>
+		<string>Двоичный поиск элемента в массиве</string>
+		<string>Проверка на подпоследовательность</string>
+	</array>
+	<key>secondTab</key>
+	<array>
+		<string>Деревья со случайным поиском</string>
+		<string>Обходы бинарных деревьев</string>
+		<string>Б , Б+ , Б++ деревья</string>
+		<string>Хеш - таблицы</string>
+		<string>Красно - черные деревья</string>
+		<string>AVL  деревья</string>
+	</array>
+	<key>firstTab</key>
+	<array>
+		<string>Выбором</string>
+		<string>Вставками</string>
+		<string>Топологическая</string>
+		<string>Пузырьком</string>
+		<string>Слиянием</string>
+		<string>Пирамидальная</string>
+		<string>Быстрая</string>
+		<string>Поразрядная</string>
+	</array>
+</dict>
+</plist>
