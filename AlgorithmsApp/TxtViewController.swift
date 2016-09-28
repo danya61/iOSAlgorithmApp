@@ -13,7 +13,8 @@ var myDict : NSDictionary?
 class TxtViewController: UIViewController {
 
     let di : [Int : [String]] = [
-        0 : ["firstVybor", "firstVstavka", "firstTopo", "firstPyzir", "firstSliyanie", "firstPiramida", "firstBystraya", "firstPorazryadnaya"]
+        0 : ["firstVybor", "firstVstavka", "firstTopo", "firstPyzir", "firstSliyanie", "firstPiramida", "firstBystraya", "firstPorazryadnaya"],
+        1 : ["secondslychpisk", "secondobhod","secondbderevo","secondhash","secondredblack","secondavl"]
     ]
     
     @IBOutlet weak var textView: UITextView!
@@ -36,9 +37,10 @@ class TxtViewController: UIViewController {
         myDict = NSDictionary(contentsOfFile: path!)!
     }
 
+    //MARK:
     private func loadText(){
-        print(firstRow)
-        print(SecondRow)
+        //print(firstRow)
+        //print(SecondRow)
        // let temp = (myDict![names[firstRow]] as! NSArray)[SecondRow] as? AnyObject
         let url : NSURL = NSBundle.mainBundle().URLForResource(/*temp*/ (di[firstRow])![SecondRow], withExtension: "txt")!
         if let loaded = Url.open(url){

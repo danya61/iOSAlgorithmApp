@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042110031D913D6400C75071 /* secondavl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04210FFD1D913D6400C75071 /* secondavl.txt */; };
+		042110041D913D6400C75071 /* secondbderevo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04210FFE1D913D6400C75071 /* secondbderevo.txt */; };
+		042110051D913D6400C75071 /* secondhash.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04210FFF1D913D6400C75071 /* secondhash.txt */; };
+		042110061D913D6400C75071 /* secondobhod.txt in Resources */ = {isa = PBXBuildFile; fileRef = 042110001D913D6400C75071 /* secondobhod.txt */; };
+		042110071D913D6400C75071 /* secondredblack.txt in Resources */ = {isa = PBXBuildFile; fileRef = 042110011D913D6400C75071 /* secondredblack.txt */; };
+		042110081D913D6400C75071 /* secondslychpisk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 042110021D913D6400C75071 /* secondslychpisk.txt */; };
 		042BF67A1D81ED1D00E991DA /* AlgoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BF6791D81ED1D00E991DA /* AlgoViewCell.swift */; };
 		0433839A1D82CEED0068704C /* algoNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 043383991D82CEED0068704C /* algoNames.plist */; };
 		044F0F2F1D7B3599002636FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F0F2E1D7B3599002636FE /* AppDelegate.swift */; };
@@ -31,6 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04210FFD1D913D6400C75071 /* secondavl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secondavl.txt; sourceTree = "<group>"; };
+		04210FFE1D913D6400C75071 /* secondbderevo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secondbderevo.txt; sourceTree = "<group>"; };
+		04210FFF1D913D6400C75071 /* secondhash.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secondhash.txt; sourceTree = "<group>"; };
+		042110001D913D6400C75071 /* secondobhod.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secondobhod.txt; sourceTree = "<group>"; };
+		042110011D913D6400C75071 /* secondredblack.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secondredblack.txt; sourceTree = "<group>"; };
+		042110021D913D6400C75071 /* secondslychpisk.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secondslychpisk.txt; sourceTree = "<group>"; };
 		042BF6791D81ED1D00E991DA /* AlgoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgoViewCell.swift; sourceTree = "<group>"; };
 		043383991D82CEED0068704C /* algoNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = algoNames.plist; sourceTree = "<group>"; };
 		044F0F2B1D7B3599002636FE /* AlgorithmsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlgorithmsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +127,12 @@
 		04BA79B71D89934F00B5559A /* txtFiles */ = {
 			isa = PBXGroup;
 			children = (
+				04210FFD1D913D6400C75071 /* secondavl.txt */,
+				04210FFE1D913D6400C75071 /* secondbderevo.txt */,
+				04210FFF1D913D6400C75071 /* secondhash.txt */,
+				042110001D913D6400C75071 /* secondobhod.txt */,
+				042110011D913D6400C75071 /* secondredblack.txt */,
+				042110021D913D6400C75071 /* secondslychpisk.txt */,
 				045C49D11D8BF6C1001846FF /* firstBystraya.txt */,
 				045C49D21D8BF6C1001846FF /* firstPiramida.txt */,
 				045C49D31D8BF6C1001846FF /* firstPorazryadnaya.txt */,
@@ -205,13 +223,19 @@
 				045C49DE1D8BF6C1001846FF /* firstVstavka.txt in Resources */,
 				045C49D81D8BF6C1001846FF /* firstBystraya.txt in Resources */,
 				045C49DA1D8BF6C1001846FF /* firstPorazryadnaya.txt in Resources */,
+				042110041D913D6400C75071 /* secondbderevo.txt in Resources */,
 				0433839A1D82CEED0068704C /* algoNames.plist in Resources */,
 				045C49D91D8BF6C1001846FF /* firstPiramida.txt in Resources */,
+				042110031D913D6400C75071 /* secondavl.txt in Resources */,
 				044F0F3C1D7B3599002636FE /* LaunchScreen.storyboard in Resources */,
+				042110061D913D6400C75071 /* secondobhod.txt in Resources */,
 				044F0F391D7B3599002636FE /* Assets.xcassets in Resources */,
+				042110051D913D6400C75071 /* secondhash.txt in Resources */,
 				044F0F341D7B3599002636FE /* Main.storyboard in Resources */,
 				04BA79BA1D899A3700B5559A /* firstVybor.txt in Resources */,
+				042110071D913D6400C75071 /* secondredblack.txt in Resources */,
 				045C49DD1D8BF6C1001846FF /* firstTopo.txt in Resources */,
+				042110081D913D6400C75071 /* secondslychpisk.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

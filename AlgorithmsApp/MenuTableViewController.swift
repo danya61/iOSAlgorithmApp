@@ -60,24 +60,14 @@ class MenuTableViewController: UITableViewController {
         if indexPath.section  == 0 {
             cell.textLabel?.text = cells[indexPath.row] }
         else if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "Избранное"
-            }
-            else {
-                cell.textLabel?.text = ""
-            }
+            cell.textLabel?.text = ""
         }
         return cell
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.section == 1 {
-            if indexPath.row != 0 {
-                return nil
-            }
-            else {
-                return indexPath
-            }
+            return nil
         }
         else {
             return indexPath

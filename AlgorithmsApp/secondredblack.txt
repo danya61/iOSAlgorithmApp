@@ -1,0 +1,365 @@
+Красно-черные деревья - один из способов балансировки деревьев. Название происходит от стандартной раскраски узлов таких деревьев в красный и черный цвета. Цвета узлов используются при балансировке дерева. Во время операций вставки и удаления поддеревья может понадобиться повернуть, чтобы достигнуть сбалансированности дерева. Оценкой как среднего время, так и наихудшего является O(log n).
+
+Прекрасно написанные разделы о красно-черных деревьях вы найдете у Кормена-Ривеста-Лейзертона в их талмуде об алгоритмах.
+
+
+  Теория
+
+
+
+Красно-черное дерево - это бинарное дерево с следующими свойствами:
+Каждый узел покрашен либо в черный, либо в красный цвет.
+Листьями объявляются NIL-узлы (т.е. "виртуальные" узлы, наследники узлов, которые обычно называют листьями; на них "указывают" NULL указатели). Листья покрашены в черный цвет.
+Если узел красный, то оба его потомка черны.
+На всех ветвях дерева, ведущих от его корня к листьям, число черных узлов одинаково.
+Количество черных узлов на ветви от корня до листа называется черной высотой дерева. Перечисленные свойства гарантируют, что самая длинная ветвь от корня к листу не более чем вдвое длиннее любой другой ветви от корня к листу. Чтобы понять, почему это так, рассмотрим дерево с черной высотой 2. Кратчайшее возможное расстояние от корня до листа равно двум - когда оба узла черные. Длиннейшее расстояние от корня до листа равно четырем - узлы при этом покрашены (от корня к листу) так: красный, черный, красный, черный. Сюда нельзя добавить черные узлы, поскольку при этом нарушится свойство 4, из которого вытекает корректность понятия черной высоты. Поскольку согласно свойству 3 у красных узлов непременно черные наследники, в подобной последовательности недопустимы и два красных узла подряд. Таким образом, длиннейший путь, который мы можем сконструировать, состоит из чередования красных и черных узлов, что и приводит нас к удвоенной длине пути, проходящего только через черные узлы. Все операции над деревом должны уметь работать с перечисленными свойствами. В частности, при вставке и удалении эти свойства должны сохраниться.
+
+  Вставка
+
+
+
+Чтобы вставить узел, мы сначала ищем в дереве место, куда его следует добавить. Новый узел всегда добавляется как лист, поэтому оба его потомка являются NIL-узлами и предполагаются черными. После вставки красим узел в красный цвет. После этого смотрим на предка и проверяем, не нарушается ли красно-черное свойство. Если необходимо, мы перекрашиваем узел и производим поворот, чтобы сбалансировать дерево.
+Вставив красный узел с двумя NIL-потомками, мы сохраняем свойство черной высоты (свойство 4). Однако, при этом может оказаться нарушенным свойство 3, согласно которому оба потомка красного узла обязательно черны. В нашем случае оба потомка нового узла черны по определению (поскольку они являются NIL-узлами), так что рассмотрим ситуацию, когда предок нового узла красный: при этом будет нарушено свойство 3. Достаточно рассмотреть следующие два случая:
+
+Красный предок, красный "дядя": Допустим, У нового узла X предок и "дядя" оказались красными. Простое перекрашивание избавляет нас от красно-красного нарушения. После перекраски нужно проверить "дедушку" нового узла (узел B), поскольку он может оказаться красным. Обратите внимание на распространение влияния красного узла на верхние узлы дерева. В самом конце корень мы красим в черный цвет корень дерева. Если он был красным, то при этом увеличивается черная высота дерева.
+
+
+Красный предок, черный "дядя": Допустим, "дядя" нового узла оказался черным. Здесь узлы может понадобиться вращать, чтобы скорректировать поддеревья. В этом месте алгоритм может остановиться из-за отсутствия красно-красных конфликтов и вершина дерева (узел A) окрашивается в черный цвет. Обратите внимание, что если узел X был в начале правым потомком, то первым применяется левое вращение, которое делает этот узел левым потомком.
+Каждая корректировка, производимая при вставке узла, заставляет нас подняться в дереве на один шаг. В этом случае до остановки алгоритма будет сделано 1 вращение (2, если узел был правым потомком). Метод удаления аналогичен.
+
+Реализация:
+
+Операторы typedef T, а также сравнивающие compLT и compEQ следует изменить так, чтобы они соответствовали данным, хранимым в узлах дерева. В каждом узле типа Node хранятся указатели left, right на двух потомков и parent на предка. Цвет узла хранится в поле color и может быть либо RED, либо BLACK. Собственно данные хранятся в поле data. Все листья дерева являются "сторожевыми" (sentinel), что сильно упрощает коды. Узел root является корнем дерева и в самом начале является сторожевым.
+Функция insertNode запрашивает память под новый узел, устанавливает нужные значения его полей и вставляет в дерево. Соответственно, она вызывает insertFixup, которая следит за сохранением красно-черных свойств. Функция deleteNode удаляет узел из дерева. Она вызывает deleteFixup, которая восстанавливает красно-черные свойства. Функция findNode ищет в дереве нужный узел.
+
+/* red-black tree */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdarg.h>
+
+
+typedef int T;                  /* type of item to be stored */
+#define compLT(a,b) (a < b)
+#define compEQ(a,b) (a == b)
+
+/* Red-Black tree description */
+typedef enum { BLACK, RED } nodeColor;
+
+typedef struct Node_ {
+    struct Node_ *left;         /* left child */
+    struct Node_ *right;        /* right child */
+    struct Node_ *parent;       /* parent */
+    nodeColor color;            /* node color (BLACK, RED) */
+    T data;                     /* data stored in node */
+} Node;
+
+#define NIL &sentinel           /* all leafs are sentinels */
+Node sentinel = { NIL, NIL, 0, BLACK, 0};
+
+Node *root = NIL;               /* root of Red-Black tree */
+
+void rotateLeft(Node *x) {
+
+   /**************************
+    *  rotate node x to left *
+    **************************/
+
+    Node *y = x->right;
+
+    /* establish x->right link */
+    x->right = y->left;
+    if (y->left != NIL) y->left->parent = x;
+
+    /* establish y->parent link */
+    if (y != NIL) y->parent = x->parent;
+    if (x->parent) {
+        if (x == x->parent->left)
+            x->parent->left = y;
+        else
+            x->parent->right = y;
+    } else {
+        root = y;
+    }
+
+    /* link x and y */
+    y->left = x;
+    if (x != NIL) x->parent = y;
+}
+
+void rotateRight(Node *x) {
+
+   /****************************
+    *  rotate node x to right  *
+    ****************************/
+
+    Node *y = x->left;
+
+    /* establish x->left link */
+    x->left = y->right;
+    if (y->right != NIL) y->right->parent = x;
+
+    /* establish y->parent link */
+    if (y != NIL) y->parent = x->parent;
+    if (x->parent) {
+        if (x == x->parent->right)
+            x->parent->right = y;
+        else
+            x->parent->left = y;
+    } else {
+        root = y;
+    }
+
+    /* link x and y */
+    y->right = x;
+    if (x != NIL) x->parent = y;
+}
+
+void insertFixup(Node *x) {
+
+   /*************************************
+    *  maintain Red-Black tree balance  *
+    *  after inserting node x           *
+    *************************************/
+
+    /* check Red-Black properties */
+    while (x != root && x->parent->color == RED) {
+        /* we have a violation */
+        if (x->parent == x->parent->parent->left) {
+            Node *y = x->parent->parent->right;
+            if (y->color == RED) {
+
+                /* uncle is RED */
+                x->parent->color = BLACK;
+                y->color = BLACK;
+                x->parent->parent->color = RED;
+                x = x->parent->parent;
+            } else {
+
+                /* uncle is BLACK */
+                if (x == x->parent->right) {
+                    /* make x a left child */
+                    x = x->parent;
+                    rotateLeft(x);
+                }
+
+                /* recolor and rotate */
+                x->parent->color = BLACK;
+                x->parent->parent->color = RED;
+                rotateRight(x->parent->parent);
+            }
+        } else {
+
+            /* mirror image of above code */
+            Node *y = x->parent->parent->left;
+            if (y->color == RED) {
+
+                /* uncle is RED */
+                x->parent->color = BLACK;
+                y->color = BLACK;
+                x->parent->parent->color = RED;
+                x = x->parent->parent;
+            } else {
+
+                /* uncle is BLACK */
+                if (x == x->parent->left) {
+                    x = x->parent;
+                    rotateRight(x);
+                }
+                x->parent->color = BLACK;
+                x->parent->parent->color = RED;
+                rotateLeft(x->parent->parent);
+            }
+        }
+    }
+    root->color = BLACK;
+}
+
+Node *insertNode(T data) {
+    Node *current, *parent, *x;
+
+   /***********************************************
+    *  allocate node for data and insert in tree  *
+    ***********************************************/
+
+    /* find where node belongs */
+    current = root;
+    parent = 0;
+    while (current != NIL) {
+        if (compEQ(data, current->data)) return (current);
+        parent = current;
+        current = compLT(data, current->data) ?
+            current->left : current->right;
+    }
+
+    /* setup new node */
+    if ((x = malloc (sizeof(*x))) == 0) {
+        printf ("insufficient memory (insertNode)\n");
+        exit(1);
+    }
+    x->data = data;
+    x->parent = parent;
+    x->left = NIL;
+    x->right = NIL;
+    x->color = RED;
+
+    /* insert node in tree */
+    if(parent) {
+        if(compLT(data, parent->data))
+            parent->left = x;
+        else
+            parent->right = x;
+    } else {
+        root = x;
+    }
+
+    insertFixup(x);
+    return(x);
+}
+
+void deleteFixup(Node *x) {
+
+   /*************************************
+    *  maintain Red-Black tree balance  *
+    *  after deleting node x            *
+    *************************************/
+
+    while (x != root && x->color == BLACK) {
+        if (x == x->parent->left) {
+            Node *w = x->parent->right;
+            if (w->color == RED) {
+                w->color = BLACK;
+                x->parent->color = RED;
+                rotateLeft (x->parent);
+                w = x->parent->right;
+            }
+            if (w->left->color == BLACK && w->right->color == BLACK) {
+                w->color = RED;
+                x = x->parent;
+            } else {
+                if (w->right->color == BLACK) {
+                    w->left->color = BLACK;
+                    w->color = RED;
+                    rotateRight (w);
+                    w = x->parent->right;
+                }
+                w->color = x->parent->color;
+                x->parent->color = BLACK;
+                w->right->color = BLACK;
+                rotateLeft (x->parent);
+                x = root;
+            }
+        } else {
+            Node *w = x->parent->left;
+            if (w->color == RED) {
+                w->color = BLACK;
+                x->parent->color = RED;
+                rotateRight (x->parent);
+                w = x->parent->left;
+            }
+            if (w->right->color == BLACK && w->left->color == BLACK) {
+                w->color = RED;
+                x = x->parent;
+            } else {
+                if (w->left->color == BLACK) {
+                    w->right->color = BLACK;
+                    w->color = RED;
+                    rotateLeft (w);
+                    w = x->parent->left;
+                }
+                w->color = x->parent->color;
+                x->parent->color = BLACK;
+                w->left->color = BLACK;
+                rotateRight (x->parent);
+                x = root;
+            }
+        }
+    }
+    x->color = BLACK;
+}
+
+void deleteNode(Node *z) {
+    Node *x, *y;
+
+   /*****************************
+    *  delete node z from tree  *
+    *****************************/
+
+    if (!z || z == NIL) return;
+
+
+    if (z->left == NIL || z->right == NIL) {
+        /* y has a NIL node as a child */
+        y = z;
+    } else {
+        /* find tree successor with a NIL node as a child */
+        y = z->right;
+        while (y->left != NIL) y = y->left;
+    }
+
+    /* x is y's only child */
+    if (y->left != NIL)
+        x = y->left;
+    else
+        x = y->right;
+
+    /* remove y from the parent chain */
+    x->parent = y->parent;
+    if (y->parent)
+        if (y == y->parent->left)
+            y->parent->left = x;
+        else
+            y->parent->right = x;
+    else
+        root = x;
+
+    if (y != z) z->data = y->data;
+
+
+    if (y->color == BLACK)
+        deleteFixup (x);
+
+    free (y);
+}
+
+Node *findNode(T data) {
+
+   /*******************************
+    *  find node containing data  *
+    *******************************/
+
+    Node *current = root;
+    while(current != NIL)
+        if(compEQ(data, current->data))
+            return (current);
+        else
+            current = compLT (data, current->data) ?
+                current->left : current->right;
+    return(0);
+}
+
+void main(int argc, char **argv) {
+    int a, maxnum, ct;
+    Node *t;
+
+    /* command-line:
+     *
+     *   rbt maxnum
+     *
+     *   rbt 2000
+     *       process 2000 records
+     *
+     */
+
+    maxnum = atoi(argv[1]);
+
+    for (ct = maxnum; ct; ct--) {
+        a = rand() % 9 + 1;
+        if ((t = findNode(a)) != NULL) {
+            deleteNode(t);
+        } else {
+            insertNode(a);
+        }
+    }
+}

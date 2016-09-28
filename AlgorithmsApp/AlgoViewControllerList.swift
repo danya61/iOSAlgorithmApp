@@ -74,8 +74,8 @@ class AlgoViewControllerList: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! AlgoViewCell
         cell.cellLabel.numberOfLines = 3
+        cell.cellLabel!.font = UIFont(name: "Helvetica", size: 26)
         cell.cellLabel.lineBreakMode = .ByWordWrapping
-        cell.cellLabel!.font = UIFont(name: "Helvetica", size: 33)
         let nn  = (Dict![namesOfRows[row]] as! NSArray)[indexPath.row] as! AnyObject
         //cell.cellLabel.text = Dict![namesOfRows[row]]![indexPath.row]! as? String
         cell.cellLabel.text = nn as? String
