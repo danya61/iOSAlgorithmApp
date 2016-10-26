@@ -1,3 +1,4 @@
 # iOSAlgorithmApp
-This app using a plist, cocoapod (SplitMenu - SWRevealVIew), UserDefaults
+# Не конвертируете в текущий синтаксис
+Приложение в процессе. Использован plist, cocoapod (SplitMenu - SWRevealVIew), UserDefaults, такстовые файлы
 Приложение по алгоритмам. Содержит в себе информацию о многих алгоритмах и структурах данных, с реализацией этих алгоритмов на C++
